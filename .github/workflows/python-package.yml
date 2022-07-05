@@ -17,7 +17,7 @@ jobs:
     strategy:
       matrix:
         python-version: ['3.7', '3.8', '3.9', '3.10']
-      fail-fast: true
+      fail-fast: false
     timeout-minutes: 15
     steps:
     - name: Checkout
@@ -46,16 +46,16 @@ jobs:
         COLOR: 'yes'
       run: |
         make mototest
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v1.5.2
-      with:
-        token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
-        files: ./coverage.xml
-        flags: unittests # optional
-        name: codecov-umbrella # optional
-        fail_ci_if_error: true # optional (default = false)
-        path_to_write_report: ./codecov_report.txt
-        verbose: true # optional (default = false)
+    # - name: Upload coverage to Codecov
+    #   uses: codecov/codecov-action@v1.5.2
+    #   with:
+    #     token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+    #     files: ./coverage.xml
+    #     flags: unittests # optional
+    #     name: codecov-umbrella # optional
+    #     fail_ci_if_error: true # optional (default = false)
+    #     path_to_write_report: ./codecov_report.txt
+    #     verbose: true # optional (default = false)
 
 
   pre-deploy:
